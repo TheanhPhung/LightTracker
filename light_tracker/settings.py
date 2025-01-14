@@ -50,6 +50,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTH_USER_MODEL = 'app.User'
+
 ROOT_URLCONF = 'light_tracker.urls'
 
 TEMPLATES = [
