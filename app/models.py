@@ -11,6 +11,9 @@ class User(AbstractUser):
     porn_time = models.DateTimeField(null=True, blank=True)
     masturbation_time = models.DateTimeField(null=True, blank=True)
     level = models.IntegerField(default = 1)
+    ejaculation_target = models.IntegerField(default = 7)
+    porn_target = models.IntegerField(default=7)
+    masturbation_target = models.IntegerField(default=7)
 
     def age(self):
         today = date.today()
@@ -25,11 +28,20 @@ class User(AbstractUser):
     def non_masturbation(self):
         return self.convert_time(timezone.now() - self.masturbation_time)
 
+    def ejaculation_progress(self):
+        return (self.non_ejaculation()["days"] / self.ejaculation_target) * 100
+
+    def masturbation_progress(self):
+        return (self.non_masturbation()["days"] / self.masturbation_target) * 100
+
+    def porn_progress(self):
+        return (self.non_porn()["days"] / self.porn_target) * 100
+
     def convert_time(self, time_delta):
-        time_delta = time_delta.seconds
+        days = time_delta.days
+        time_delta = time_delta.seconds + days * 86400
         minutes, seconds = divmod(time_delta, 60)
         hours, minutes = divmod(minutes, 60)
-        days, hours = divmod(hours, 24)
         return {
             "days": days,
             "hours": hours,

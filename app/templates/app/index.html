@@ -3,8 +3,44 @@
 {% block title %}Home Page{% endblock %}
 
 {% block body %}
-<h3>User: {{ user.username }}</h3>
-<p><strong>Non Ejaculation time: </strong>{{ user.non_ejaculation.seconds}}</p>
-<p><strong>Non Porn watching time: </strong>{{ user.non_porn.seconds }}</p>
-<p><strong>Non Masturbation time: </strong>{{ user.non_masturbation.seconds }}</p>
+<div class="container">
+	<h3>User: {{ user.username }} - {{ user.age }} years old</h3>
+</div>
+
+{% comment %}<p><strong>Non Ejaculation time: </strong>{{ user.non_ejaculation}}</p>{% endcomment %}
+{% comment %}<p><strong>Non Porn watching time: </strong>{{ user.non_porn }}</p>{% endcomment %}
+{% comment %}<p><strong>Non Masturbation time: </strong>{{ user.non_masturbation }}</p>{% endcomment %}
+
+<div class="container">
+	<div class="row" id="ejaculation">
+		<div class="col-sm-3"><h5><strong>Non Ejaculation</strong></h5></div>
+		<div class="col-sm-9">
+			<div class="progress">
+				<div class="progress-bar" style="width:{{ user.ejaculation_progress }}%">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" id="porn">
+		<div class="col-sm-3"><h5><strong>Non Pornographic</strong></h5></div>
+		<div class="col-sm-9">
+			<div class="progress">
+				<div class="progress-bar" style="width:{{ user.porn_progress }}%">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" id="masturbation">
+		<div class="col-sm-3"><h5><strong>Non Masturbation</strong></h5></div>
+		<div class="col-sm-9">
+			<div class="progress">
+				<div class="progress-bar" style="width:{{ user.masturbation_progress }}%">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 {% endblock %}
