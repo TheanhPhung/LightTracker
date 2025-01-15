@@ -1,5 +1,4 @@
 from django.db import models
-
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 
@@ -18,10 +17,22 @@ class User(AbstractUser):
         return today.year - self.birth_date.year - ((today.month, today.day) < (self.birth_date.month, self.birth_date.day))
 
     def non_ejaculation(self):
-        return timezone.now() - self.ejaculation_time
+        return self.convert_time(timezone.now() - self.ejaculation_time) 
 
     def non_porn(self):
-        return timezone.now() - self.porn_time
+        return self.convert_time(timezone.now() - self.porn_time)
 
     def non_masturbation(self):
-        return timezone.now() - self.masturbation_time
+        return self.convert_time(timezone.now() - self.masturbation_time)
+
+    def convert_time(self, time_delta):
+        time_delta = time_delta.seconds
+        minutes, seconds = divmod(time_delta, 60)
+        hours, minutes = divmod(minutes, 60)
+        days, hours = divmod(hours, 24)
+        return {
+            "days": days,
+            "hours": hours,
+            "minutes": minutes,
+            "seconds": seconds
+        }
