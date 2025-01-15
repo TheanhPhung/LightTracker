@@ -3,44 +3,38 @@
 {% block title %}Home Page{% endblock %}
 
 {% block body %}
-<div class="container">
-	<h3>User: {{ user.username }} - {{ user.age }} years old</h3>
-</div>
-
-{% comment %}<p><strong>Non Ejaculation time: </strong>{{ user.non_ejaculation}}</p>{% endcomment %}
-{% comment %}<p><strong>Non Porn watching time: </strong>{{ user.non_porn }}</p>{% endcomment %}
-{% comment %}<p><strong>Non Masturbation time: </strong>{{ user.non_masturbation }}</p>{% endcomment %}
-
-<div class="container">
-	<div class="row" id="ejaculation">
-		<div class="col-sm-3"><h5><strong>Non Ejaculation</strong></h5></div>
-		<div class="col-sm-9">
-			<div class="progress">
-				<div class="progress-bar" style="width:{{ user.ejaculation_progress }}%">
-				</div>
-			</div>
-		</div>
+<div class="container mt-5 row">
+	<div class="col-3">
+		<ul class="list-group list-group-flush" id="user-info">
+			<li class="list-group-item">Username: {{ user.username }}</li>
+			<li class="list-group-item">Birthday: {{ user.birth_date }}</li>
+			<li class="list-group-item">Age: {{ user.age }}</li>
+			<li class="list-group-item">Level: {{ user.level }}</li>
+		</ul>
 	</div>
 
-	<div class="row" id="porn">
-		<div class="col-sm-3"><h5><strong>Non Pornographic</strong></h5></div>
-		<div class="col-sm-9">
-			<div class="progress">
-				<div class="progress-bar" style="width:{{ user.porn_progress }}%">
-				</div>
-			</div>
+	<div class="col-9">
+		<div class="progress" id="eja-field">
+			<div class="progress-bar progress-bar-striped progress-bar-animated" style="width:{{ user.ejaculation_progress }}%">{{ user.ejaculation_progress }}%</div>
 		</div>
-	</div>
+		<div>
+			<p><strong>No Ejaculation time: </strong>{{ user.non_ejaculation.days }} days, {{ user.non_ejaculation.hours }} hours and {{ user.non_ejaculation.minutes }} minutes</p>
+		</div>
+		
+		<div class="progress" id="porn-field">
+			<div class="progress-bar progress-bar-striped progress-bar-animated bg-info" style="width:{{ user.porn_progress }}%">{{ user.porn_progress }}%</div>
+		</div>
+		<div>
+			<p><strong>No Porn time: </strong>{{ user.non_porn.days }} days, {{ user.non_porn.hours }} hours and {{ user.non_porn.minutes }} minutes</p>
+		</div>
+	
+		<div class="progress" id="mastur-field">
+			<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:{{ user.masturbation_progress }}%">{{ user.masturbation_progress }}%</div>
+		</div>
+		<div>
+			<p><strong>No Masturbation time: </strong>{{ user.non_masturbation.days }} days, {{ user.non_masturbation.hours }} hours and {{ user.non_masturbation.minutes }} minutes</p>
+		</div>
 
-	<div class="row" id="masturbation">
-		<div class="col-sm-3"><h5><strong>Non Masturbation</strong></h5></div>
-		<div class="col-sm-9">
-			<div class="progress">
-				<div class="progress-bar" style="width:{{ user.masturbation_progress }}%">
-				</div>
-			</div>
-		</div>
 	</div>
 </div>
-
 {% endblock %}

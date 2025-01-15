@@ -42,6 +42,7 @@ class User(AbstractUser):
         time_delta = time_delta.seconds + days * 86400
         minutes, seconds = divmod(time_delta, 60)
         hours, minutes = divmod(minutes, 60)
+        hours %= 24
         return {
             "days": days,
             "hours": hours,
