@@ -4,40 +4,45 @@
 
 {% block body %}
 <div class="container col mt-5 d-flex flex-column">
-<div class="row">
-	<div class="col-4"></div>
-	<div class="col-4 text-center">
-		<ul class="list-group list-group-flush" id="user-info">
-			<li class="list-group-item">Username: {{ user.username }}</li>
-			<li class="list-group-item">Birthday: {{ user.birth_date }}</li>
-			<li class="list-group-item">Age: {{ user.age }}</li>
-			<li class="list-group-item">Level: {{ user.level }}</li>
-		</ul>
-	</div>
-	<div class="col-4"></div>
-</div>
-<div class="row">
-	<div class="col-4">
-		<div class="card">
-			<ul class="list-group">
-				<li class="list-group-item"><strong>No Ejaculation: </strong>{{ user.non_ejaculation.days }} days + {{ user.non_ejaculation.hours }}hrs, {{ user.non_ejaculation.minutes }} mins, {{ user.non_ejaculation.seconds }}s</li>
-				<li class="list-group-item"><strong>Your target: </strong>{{ user.ejaculation_target }} days</li>
-				<li class="list-group-item">
-					<div class="progress">
-						<div class="progress-bar progress-bar-striped progress-bar-animated" style="width:{{ user.ejaculation_progress }}%"><strong>{{ user.ejaculation_progress|floatformat:2 }}%</strong></div>
-					</div>
-				</li>
-				<li class="list-group-item text-center">
-					<button class="btn btn-danger">Relapse!</button>
-				</li>
+	<div class="row">
+		<div class="col-4"></div>
+		<div class="col-4 text-center">
+			<ul class="list-group list-group-flush" id="user-info">
+				<li class="list-group-item">Username: {{ user.username }}</li>
+				<li class="list-group-item">Birthday: {{ user.birth_date }}</li>
+				<li class="list-group-item">Age: {{ user.age }}</li>
+				<li class="list-group-item">Level: {{ user.level }}</li>
 			</ul>
 		</div>
-	</div>
+		<div class="col-4"></div>
+	</div> 
+
+	<div style="height:60px"></div>
+
+	<div class="row">
+		<div class="col-4">
+			<div class="card">
+				<ul class="list-group">
+					<li class="list-group-item">
+						<strong>No Ejaculation: </strong><br>{{ user.non_ejaculation.days }} days and {{ user.non_ejaculation.hours }}hrs, {{ user.non_ejaculation.minutes }} mins, {{ user.non_ejaculation.seconds }}s
+					</li>
+					<li class="list-group-item"><strong>Your target: </strong>{{ user.ejaculation_target }} days</li>
+					<li class="list-group-item">
+						<div class="progress">
+							<div class="progress-bar progress-bar-striped progress-bar-animated" style="width:{{ user.ejaculation_progress }}%"><strong>{{ user.ejaculation_progress|floatformat:2 }}%</strong></div>
+						</div>
+					</li>
+					<li class="list-group-item text-center">
+						<button class="btn btn-danger">Relapse!</button>
+					</li>
+				</ul>
+			</div>
+		</div>
 
 		<div class="col-4">
 			<div class="card">
 				<ul class="list-group">
-					<li class="list-group-item"><strong>No porn: </strong>{{ user.non_porn.days }} days + {{ user.non_porn.hours }}hrs, {{ user.non_porn.minutes }} mins, {{ user.non_porn.seconds }}s</li>
+					<li class="list-group-item"><strong>No porn: </strong><br>{{ user.non_porn.days }} days, {{ user.non_porn.hours }}hrs, {{ user.non_porn.minutes }} mins, {{ user.non_porn.seconds }}s</li>
 					<li class="list-group-item"><strong>Your target: </strong>{{ user.porn_target }} days</li>
 					<li class="list-group-item">
 						<div class="progress">
@@ -54,7 +59,7 @@
 		<div class="col-4">
 			<div class="card">
 				<ul class="list-group">
-					<li class="list-group-item"><strong>No masturbation: </strong>{{ user.non_masturbation.days }} days + {{ user.non_masturbation.hours }}hrs, {{ user.non_masturbation.minutes }} mins, {{ user.non_masturbation.seconds }}s</li>
+					<li class="list-group-item"><strong>No masturbation: </strong><br>{{ user.non_masturbation.days }} days , {{ user.non_masturbation.hours }}hrs, {{ user.non_masturbation.minutes }} mins, {{ user.non_masturbation.seconds }}s</li>
 					<li class="list-group-item"><strong>Your target: </strong>{{ user.masturbation_target }} days</li>
 					<li class="list-group-item">
 						<div class="progress">

@@ -1,5 +1,5 @@
 body {
-	font-family: Source-Code-Pro;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .progress {
@@ -8,4 +8,34 @@ body {
 
 .card {
 	height: 30px;
+}
+
+#nav-bar {
+	ul {
+		list-style-type: none;
+		overflow: hidden;
+		background-color: #22313f;
+	}
+
+	li.left-float {
+		float: left;
+	}
+
+	li.right-float {
+		float: right;
+	}
+
+	li a {
+		display: block;
+		color: #fafafa;
+		/*color: #e4f1f3;*/
+		padding: 8px 16px;
+		text-decoration: none;
+	}
+
+	li a:hover {
+		background-color: #34495e;
+		font-weight: bold;
+		color: white;
+	}
 }
