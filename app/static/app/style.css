@@ -39,3 +39,11 @@ body {
 		color: white;
 	}
 }
+
+#login-form {
+	width: 500px;
+
+	button {
+		width: 110px;
+	}
+}

@@ -1,24 +1,47 @@
 {% extends "app/base.html" %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Register{% endblock %}
 
 {% block body %}
-<div>
+<div class="container" id="login-form">
+	<div style="height:120px"></div>
 	<form action="{% url "register" %}" method="post">
 		{% csrf_token %}
-		<div>
-			<label for="username">Username: </label>
-			<input type="text" name="username" required autofocus>
+
+		<div class="mb-3 row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-9 text-center">
+				<h3>Register Form</h3>
+			</div>
 		</div>
-		<div>
-			<label for="password">Password: </label>
-			<input type="password" name="password" required>
+
+		<div class="mb-3 row">
+			<label class="col-sm-3 col-form-label" for="username">Username</label>
+			<div class="col-sm-9">
+				<input class="form-control" type="text" name="username" required autofocus>
+			</div>
 		</div>
-		<div>
-			<label for="confirmation">Confirmation: </label>
-			<input type="password" name="confirmation" required>
+		
+		<div class="mb-3 row">
+			<label class="col-sm-3 col-form-label" for="password">Password</label>
+			<div class="col-sm-9">
+				<input class="form-control" type="password" name="password" required autofocus>
+			</div>
 		</div>
-		<button class="btn btn-primary" type="submit">Register</button>
+
+		<div class="mb-3 row">
+			<label class="col-sm-3 col-form-label" for="confirmation">Confirmation</label>
+			<div class="col-sm-9">
+				<input class="form-control" type="password" name="confirmation" required autofocus>
+			</div>
+		</div>
+
+		<div class="mb-3 row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-9 text-center">
+				<button class="btn btn-primary" type="submit"><strong>Register</strong></button>
+			</div>
+		</div>
 	</form>
 </div>
 {% endblock %}
