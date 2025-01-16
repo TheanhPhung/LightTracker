@@ -9,8 +9,10 @@
 		<div class="col-4 text-center">
 			<ul class="list-group list-group-flush" id="user-info">
 				<li class="list-group-item">Username: {{ user.username }}</li>
+				{% if user.birth_date %}
 				<li class="list-group-item">Birthday: {{ user.birth_date }}</li>
 				<li class="list-group-item">Age: {{ user.age }}</li>
+				{% endif %}
 				<li class="list-group-item">Level: {{ user.level }}</li>
 			</ul>
 		</div>
@@ -42,7 +44,7 @@
 		<div class="col-4">
 			<div class="card">
 				<ul class="list-group">
-					<li class="list-group-item"><strong>No porn: </strong><br>{{ user.non_porn.days }} days, {{ user.non_porn.hours }}hrs, {{ user.non_porn.minutes }} mins, {{ user.non_porn.seconds }}s</li>
+					<li class="list-group-item"><strong>No porn: </strong><br>{{ user.non_porn.days }} days and {{ user.non_porn.hours }}hrs, {{ user.non_porn.minutes }} mins, {{ user.non_porn.seconds }}s</li>
 					<li class="list-group-item"><strong>Your target: </strong>{{ user.porn_target }} days</li>
 					<li class="list-group-item">
 						<div class="progress">
@@ -59,7 +61,7 @@
 		<div class="col-4">
 			<div class="card">
 				<ul class="list-group">
-					<li class="list-group-item"><strong>No masturbation: </strong><br>{{ user.non_masturbation.days }} days , {{ user.non_masturbation.hours }}hrs, {{ user.non_masturbation.minutes }} mins, {{ user.non_masturbation.seconds }}s</li>
+					<li class="list-group-item"><strong>No masturbation: </strong><br>{{ user.non_masturbation.days }} days and {{ user.non_masturbation.hours }}hrs, {{ user.non_masturbation.minutes }} mins, {{ user.non_masturbation.seconds }}s</li>
 					<li class="list-group-item"><strong>Your target: </strong>{{ user.masturbation_target }} days</li>
 					<li class="list-group-item">
 						<div class="progress">
