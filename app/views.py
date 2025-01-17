@@ -7,6 +7,9 @@ from django.contrib.auth.decorators import login_required
 
 from .models import *
 
+ACT_LIST = ["ejaculation", "porn", "masturbation"]
+
+
 def index(request):
     if request.user.is_authenticated:
         user = request.user
@@ -76,7 +79,6 @@ def logout_view(request):
 
 @login_required
 def relapse(request, act_code):
-    ACT_LIST = ["ejaculation", "porn", "masturbation"]
     if request.method == "POST":
         user = request.user
         action_field = ACT_LIST[act_code] + "_time"
@@ -97,4 +99,11 @@ def targets(request):
 
 @login_required
 def set_target(request, act_code):
-    return
+    if request.method == "POST":
+        user = request.user
+        new_target = request.POST["new_target"]
+        target_field_name = ACT_LIST[act_code] + "_target"
+        setattr(user, target_field_name, new_target)
+        user.save()
+    
+        return redirect("index")

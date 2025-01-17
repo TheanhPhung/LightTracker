@@ -12,10 +12,11 @@ class User(AbstractUser):
     ejaculation_time = models.DateTimeField(null=True, blank=True)
     porn_time = models.DateTimeField(null=True, blank=True)
     masturbation_time = models.DateTimeField(null=True, blank=True)
-    level = models.IntegerField(default = 1)
     ejaculation_target = models.IntegerField(default = 1)
     porn_target = models.IntegerField(default=1)
     masturbation_target = models.IntegerField(default=1)
+    level = models.IntegerField(default = 1)
+    score = models.IntegerField(default = 0)
 
     def age(self):
         today = date.today()

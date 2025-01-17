@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
-{% comment %}<html lang="en">{% endcomment %}
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +24,6 @@
 				<li class="left-float"><a href="{% url 'targets' %}">Set Targets</a></li>
 				<li class="left-float"><a href="#">History</a></li>
 				<li class="right-float"><a href="{% url 'logout' %}">Logout</a></li>
-				<li class="right-float"><a href="#">Profile</a></li>
 				{% else %}
 				<li class="right-float"><a href="{% url 'register' %}">Register</a></li>
 				<li class="right-float"><a href="{% url 'login' %}">Login</a></li>

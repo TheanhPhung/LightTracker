@@ -18,11 +18,16 @@
 				<td>{{ user.ejaculation_target }}</td>
 				<td>
 					<form action="{% url 'set_target' 0 %}" method="post">
-						<div class="row">
-							<div class="col-sm-6">
+						{% csrf_token %}
+						<div class="d-flex flex-row justify-content-center">
+							<div class="col-sm-6 flex-item">
 								<input class="form-control" type="number" min="1" name="new_target">
 							</div>
-						<button class="btn btn-warning col-auto" type="submit">Confirm</button>
+							<div class="flex-item" style="width:20px"></div>
+							<div class="flex-item">
+								<button class="btn btn-warning col-auto" type="submit">Confirm</button>
+							</div>
+						</div>
 					</form>
 				</td>
 			</tr>
@@ -31,11 +36,16 @@
 				<td>{{ user.porn_target }}</td>
 				<td>
 					<form action="{% url 'set_target' 1 %}" method="post">
-						<div class="row">
+						{% csrf_token %}
+						<div class="d-flex flex-row justify-content-center">
 							<div class="col-sm-6">
 								<input class="form-control" type="number" min="1" name="new_target">
 							</div>
-						<button class="btn btn-warning col-auto" type="submit">Confirm</button>
+							<div class="flex-item" style="width:20px"></div>
+							<div class="flex-item">
+								<button class="btn btn-warning col-auto" type="submit">Confirm</button>
+							</div>
+						</div>
 					</form>
 				</td>
 			</tr>
@@ -44,11 +54,15 @@
 				<td>{{ user.masturbation_target }}</td>
 				<td>
 					<form action="{% url 'set_target' 2 %}" method="post">
-						<div class="row">
-							<div class="col-sm-6">
+						{% csrf_token %}
+						<div class="d-flex flex-row justify-content-center">
+							<div class="col-sm-6 flex-item">
 								<input class="form-control" type="number" min="1" name="new_target">
 							</div>
-						<button class="btn btn-warning col-auto" type="submit">Confirm</button>
+							<div class="flex-item" style="width:20px"></div>
+							<div class="flex-item">
+								<button class="btn btn-warning col-auto" type="submit">Confirm</button>
+							</div>
 					</form>
 				</td>
 			</tr>
