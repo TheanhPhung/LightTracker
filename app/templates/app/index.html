@@ -26,12 +26,16 @@
 			<div class="card">
 				<ul class="list-group">
 					<li class="list-group-item">
-						<strong>No Ejaculation: </strong><br>{{ user.non_ejaculation.days }} days and {{ user.non_ejaculation.hours }}hrs, {{ user.non_ejaculation.minutes }} mins, {{ user.non_ejaculation.seconds }}s
+						<strong>No Ejaculation: </strong><br>{{ no_ejaculation.days }} days and {{ no_ejaculation.hours }}hrs, {{ no_ejaculation.minutes }} mins, {{ no_ejaculation.seconds }}
 					</li>
 					<li class="list-group-item"><strong>Your target: </strong>{{ user.ejaculation_target }} days</li>
 					<li class="list-group-item">
 						<div class="progress">
-							<div class="progress-bar progress-bar-striped progress-bar-animated" style="width:{{ user.ejaculation_progress }}%"><strong>{{ user.ejaculation_progress|floatformat:2 }}%</strong></div>
+							<div class="progress-bar progress-bar-striped progress-bar-animated" style="width:{{ ejaculation_progress }}%">
+								{% if ejaculation_progress > 10 %}
+								<strong>{{ ejaculation_progress|floatformat:2 }}%</strong>
+								{% endif %}
+							</div>
 						</div>
 					</li>
 					<li class="list-group-item text-center">
@@ -47,11 +51,15 @@
 		<div class="col-4">
 			<div class="card">
 				<ul class="list-group">
-					<li class="list-group-item"><strong>No porn: </strong><br>{{ user.non_porn.days }} days and {{ user.non_porn.hours }}hrs, {{ user.non_porn.minutes }} mins, {{ user.non_porn.seconds }}s</li>
+					<li class="list-group-item"><strong>No porn: </strong><br>{{ no_porn.days }} days and {{ no_porn.hours }}hrs, {{ no_porn.minutes }} mins, {{ no_porn.seconds }}s</li>
 					<li class="list-group-item"><strong>Your target: </strong>{{ user.porn_target }} days</li>
 					<li class="list-group-item">
 						<div class="progress">
-							<div class="progress-bar progress-bar-striped progress-bar-animated bg-info" style="width:{{ user.porn_progress }}%"><strong>{{ user.porn_progress|floatformat:2 }}%</strong></div>
+							<div class="progress-bar progress-bar-striped progress-bar-animated bg-info" style="width:{{ porn_progress }}%">
+								{% if porn_progress > 10 %}
+								<strong>{{ porn_progress|floatformat:2 }}%</strong>
+								{% endif %}
+							</div>
 						</div>
 					</li>
 					<li class="list-group-item text-center">
@@ -67,11 +75,15 @@
 		<div class="col-4">
 			<div class="card">
 				<ul class="list-group">
-					<li class="list-group-item"><strong>No masturbation: </strong><br>{{ user.non_masturbation.days }} days and {{ user.non_masturbation.hours }}hrs, {{ user.non_masturbation.minutes }} mins, {{ user.non_masturbation.seconds }}s</li>
+					<li class="list-group-item"><strong>No masturbation: </strong><br>{{ no_masturbation.days }} days and {{ no_masturbation.hours }}hrs, {{ no_masturbation.minutes }} mins, {{ no_masturbation.seconds }}s</li>
 					<li class="list-group-item"><strong>Your target: </strong>{{ user.masturbation_target }} days</li>
 					<li class="list-group-item">
 						<div class="progress">
-							<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:{{ user.masturbation_progress }}%"><strong>{{ user.masturbation_progress|floatformat:2 }}%</strong></div>
+							<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:{{ masturbation_progress }}%">
+								{% if masturbation_progress %}
+								<strong>{{ masturbation_progress|floatformat:2 }}%</strong>
+								{% endif %}
+							</div>
 						</div>
 					</li>
 					<li class="list-group-item text-center">
