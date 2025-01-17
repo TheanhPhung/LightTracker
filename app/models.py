@@ -9,12 +9,19 @@ class User(AbstractUser):
     ACT_LIST = ["ejaculation", "porn", "masturbation"]
 
     birth_date = models.DateField(null=True, blank=True)
+
     ejaculation_time = models.DateTimeField(null=True, blank=True)
     porn_time = models.DateTimeField(null=True, blank=True)
     masturbation_time = models.DateTimeField(null=True, blank=True)
+
     ejaculation_target = models.IntegerField(default = 1)
     porn_target = models.IntegerField(default=1)
     masturbation_target = models.IntegerField(default=1)
+
+    ejaculation_update = models.BooleanField(default=False)
+    porn_update = models.BooleanField(default=False)
+    masturbation_update = models.BooleanField(default=False)
+
     level = models.IntegerField(default = 1)
     score = models.IntegerField(default = 0)
 
@@ -46,3 +53,35 @@ class User(AbstractUser):
             "minutes": minutes,
             "seconds": seconds
         }
+
+    def update_score(self, delta):
+        self.score += delta
+        if delta > 0:
+            self.update_level()
+            self.save()
+        else:
+            self.score = max(0, self.score)
+        
+        return self.score
+
+    def score_by_level(self, level):
+        if level in range(3):
+            return 10
+        return self.score_by_level(level - 2) + self.score_by_level(level - 1) 
+
+    def update_level(self):
+        score = self.score
+        level = self.level
+        while True:
+            score -= self.score_by_level(level)
+            if score <= 0:
+                score += self.score_by_level(level)
+                break
+            else:
+                level += 1
+        
+        self.score = score
+        self.level = level
+        self.save()
+
+        return self.level

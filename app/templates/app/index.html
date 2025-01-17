@@ -13,7 +13,14 @@
 				<li class="list-group-item">Birthday: {{ user.birth_date }}</li>
 				<li class="list-group-item">Age: {{ user.age }}</li>
 				{% endif %}
-				<li class="list-group-item">Level: {{ user.level }} - Score: {{ user.score }}</li>
+				<li class="list-group-item">
+					<div>
+						Level: {{ user.level }} - Score: {{ user.score }}
+					</div>
+					<div class="progress mt-2">
+						<div class="progress-bar bg-danger" style="width:{{ score_progress }}%">{{ user.score }}</div>
+					</div>
+				</li>
 			</ul>
 		</div>
 		<div class="col-4"></div>
