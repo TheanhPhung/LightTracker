@@ -10,4 +10,5 @@ urlpatterns = [
     path("register/", views.register, name="register"),
     path("relapse/<int:act_code>/", views.relapse, name="relapse"),
     path("targets/", views.targets, name="targets"),
+    path("set_target/<int:act_code>", views.set_target, name="set_target"),
 ]

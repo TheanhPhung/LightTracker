@@ -4,29 +4,53 @@
 
 {% block body %}
 <div class="container mt-3">
-	<table class="table table-bordered">
+	<table class="table table-bordered text-center">
 		<thead>
 			<tr>
 				<th>Field name</th>
 				<th>Current target</th>
-				<th>New targer</th>
+				<th class="col-sm-4">New targer</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td>No Ejaculation</td>
 				<td>{{ user.ejaculation_target }}</td>
-				<td></td>
+				<td>
+					<form action="{% url 'set_target' 0 %}" method="post">
+						<div class="row">
+							<div class="col-sm-6">
+								<input class="form-control" type="number" min="1" name="new_target">
+							</div>
+						<button class="btn btn-warning col-auto" type="submit">Confirm</button>
+					</form>
+				</td>
 			</tr>
 			<tr>
 				<td>No Porn</td>
 				<td>{{ user.porn_target }}</td>
-				<td></td>
+				<td>
+					<form action="{% url 'set_target' 1 %}" method="post">
+						<div class="row">
+							<div class="col-sm-6">
+								<input class="form-control" type="number" min="1" name="new_target">
+							</div>
+						<button class="btn btn-warning col-auto" type="submit">Confirm</button>
+					</form>
+				</td>
 			</tr>
 			<tr>
 				<td>No Masturbation</td>
 				<td>{{ user.masturbation_target }}</td>
-				<td></td>
+				<td>
+					<form action="{% url 'set_target' 2 %}" method="post">
+						<div class="row">
+							<div class="col-sm-6">
+								<input class="form-control" type="number" min="1" name="new_target">
+							</div>
+						<button class="btn btn-warning col-auto" type="submit">Confirm</button>
+					</form>
+				</td>
 			</tr>
 		</tbody>
 	</table>

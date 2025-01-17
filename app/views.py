@@ -10,7 +10,16 @@ from .models import *
 def index(request):
     if request.user.is_authenticated:
         user = request.user
-        return render(request, "app/index.html", {"user": user})
+
+        return render(request, "app/index.html", {
+            "user": user,
+            "no_ejaculation": user.convert_time(0),
+            "no_porn": user.convert_time(1),
+            "no_masturbation": user.convert_time(2),
+            "ejaculation_progress": user.action_progress(0),
+            "porn_progress": user.action_progress(1),
+            "masturbation_progress": user.action_progress(2),
+        })
 
     return redirect("login")
 
@@ -67,16 +76,15 @@ def logout_view(request):
 
 @login_required
 def relapse(request, act_code):
+    ACT_LIST = ["ejaculation", "porn", "masturbation"]
     if request.method == "POST":
-        ACT_CHOICES = ["ejaculation_time", "porn_time", "masturbation_time"]
-        print(f"act_code = {act_code}")
         user = request.user
+        action_field = ACT_LIST[act_code] + "_time"
 
-        setattr(user, ACT_CHOICES[act_code], timezone.now())
+        setattr(user, action_field, timezone.now())
         user.save()
 
-        act_name = ACT_CHOICES[act_code].replace("_", " ")
-        messages.warning(request, f"Your \"no {act_name}\" progress has been reset. Try your best once more time!")
+        messages.warning(request, f"Your \"non {ACT_LIST[act_code]}\" progress has been reset!")
 
         return redirect("index")
 
@@ -85,3 +93,8 @@ def relapse(request, act_code):
 def targets(request):
     user = request.user
     return render(request, "app/targets.html", {"user": user})
+
+
+@login_required
+def set_target(request, act_code):
+    return
