@@ -22,7 +22,7 @@
 			<ul>
 				{% if request.user.is_authenticated %}
 				<li class="left-float"><a href="{% url 'index' %}">Dashboard</a></li>
-				<li class="left-float"><a href="#">Set Targets</a></li>
+				<li class="left-float"><a href="{% url 'targets' %}">Set Targets</a></li>
 				<li class="left-float"><a href="#">History</a></li>
 				<li class="right-float"><a href="{% url 'logout' %}">Logout</a></li>
 				<li class="right-float"><a href="#">Profile</a></li>

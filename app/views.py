@@ -79,3 +79,9 @@ def relapse(request, act_code):
         messages.warning(request, f"Your \"no {act_name}\" progress has been reset. Try your best once more time!")
 
         return redirect("index")
+
+
+@login_required
+def targets(request):
+    user = request.user
+    return render(request, "app/targets.html", {"user": user})

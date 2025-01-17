@@ -1,0 +1,34 @@
+{% extends "app/base.html" %}
+
+{% block title %}Targets{% endblock %}
+
+{% block body %}
+<div class="container mt-3">
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Field name</th>
+				<th>Current target</th>
+				<th>New targer</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>No Ejaculation</td>
+				<td>{{ user.ejaculation_target }}</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>No Porn</td>
+				<td>{{ user.porn_target }}</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>No Masturbation</td>
+				<td>{{ user.masturbation_target }}</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+{% endblock %}
