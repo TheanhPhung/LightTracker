@@ -32,7 +32,7 @@
 					<li class="list-group-item">
 						<div class="progress">
 							<div class="progress-bar progress-bar-striped progress-bar-animated" style="width:{{ ejaculation_progress }}%">
-								{% if ejaculation_progress > 10 %}
+								{% if ejaculation_progress > 15 %}
 								<strong>{{ ejaculation_progress|floatformat:2 }}%</strong>
 								{% endif %}
 							</div>
@@ -56,7 +56,7 @@
 					<li class="list-group-item">
 						<div class="progress">
 							<div class="progress-bar progress-bar-striped progress-bar-animated bg-info" style="width:{{ porn_progress }}%">
-								{% if porn_progress > 10 %}
+								{% if porn_progress > 15 %}
 								<strong>{{ porn_progress|floatformat:2 }}%</strong>
 								{% endif %}
 							</div>
@@ -80,7 +80,7 @@
 					<li class="list-group-item">
 						<div class="progress">
 							<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:{{ masturbation_progress }}%">
-								{% if masturbation_progress %}
+								{% if masturbation_progress > 15 %}
 								<strong>{{ masturbation_progress|floatformat:2 }}%</strong>
 								{% endif %}
 							</div>
