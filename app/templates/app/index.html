@@ -35,7 +35,10 @@
 						</div>
 					</li>
 					<li class="list-group-item text-center">
-						<button class="btn btn-danger">Relapse!</button>
+						<form action="{% url 'relapse' 0 %}" method="post">
+							{% csrf_token %}
+							<button class="btn btn-danger" type="submit">Relapse!</button>
+						</form>
 					</li>
 				</ul>
 			</div>
@@ -52,7 +55,10 @@
 						</div>
 					</li>
 					<li class="list-group-item text-center">
-						<button class="btn btn-danger">Relapse!</button>
+						<form action="{% url 'relapse' 1 %}" method="post">
+							{% csrf_token %}
+							<button class="btn btn-danger" type="submit">Relapse!</button>
+						</form>
 					</li>
 				</ul>
 			</div>
@@ -69,7 +75,10 @@
 						</div>
 					</li>
 					<li class="list-group-item text-center">
-						<button class="btn btn-danger">Relapse!</button>
+						<form action="{% url 'relapse' 2 %}" method="post">
+							{% csrf_token %}
+							<button class="btn btn-danger" type="submit">Relapse!</button>
+						</form>
 					</li>
 				</ul>
 			</div>

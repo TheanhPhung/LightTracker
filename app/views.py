@@ -63,3 +63,19 @@ def logout_view(request):
     logout(request)
     messages.warning(request, f"You have just logged out of {username}'s account!")
     return redirect("login") 
+
+
+@login_required
+def relapse(request, act_code):
+    if request.method == "POST":
+        ACT_CHOICES = ["ejaculation_time", "porn_time", "masturbation_time"]
+        print(f"act_code = {act_code}")
+        user = request.user
+
+        setattr(user, ACT_CHOICES[act_code], timezone.now())
+        user.save()
+
+        act_name = ACT_CHOICES[act_code].replace("_", " ")
+        messages.warning(request, f"Your \"no {act_name}\" progress has been reset. Try your best once more time!")
+
+        return redirect("index")
