@@ -22,7 +22,6 @@
 				{% if request.user.is_authenticated %}
 				<li class="left-float"><a href="{% url 'index' %}">Dashboard</a></li>
 				<li class="left-float"><a href="{% url 'targets' %}">Set Targets</a></li>
-				<li class="left-float"><a href="#">History</a></li>
 				<li class="right-float"><a href="{% url 'logout' %}">Logout</a></li>
 				{% else %}
 				<li class="right-float"><a href="{% url 'register' %}">Register</a></li>
@@ -31,9 +30,17 @@
 			</ul>
 		</div>
 
-		<div id="messages">
+		<div class="container" id="messages">
 			{% for message in messages %}
-			<div>{{ message }}</div>
+			<div class="alert 
+				{% if message.tags == "success" %}
+				alert-success
+				{% elif message.tags == "error" %}
+				alert-warning
+				{% else %}
+				alert-danger
+				{% endif %}
+				" role="alert">{{ message }}</div>
 			{% endfor %}
 		</div>
 

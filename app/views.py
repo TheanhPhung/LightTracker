@@ -8,8 +8,8 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 
 ACT_LIST = ["ejaculation", "porn", "masturbation"]
-BONUS = 10
-PENALTY = -50
+BONUS = 5
+PENALTY = -25
 
 def index(request):
     if request.user.is_authenticated:
@@ -65,7 +65,7 @@ def register(request):
     if request.method == "POST":
         username = request.POST["username"]
         if User.objects.filter(username=username):
-            messsages.error(request, "Username already exists!")
+            messages.error(request, "Username already exists!")
             return render(request, "app/register.html")
 
         password = request.POST["password"]
